@@ -16,6 +16,7 @@ CFLAGS=-std=c++11
 all: build test clean
  
 build:
+	apt-get update && apt-get install -y sudo
 	apt-get install -y git
 	apt-get install -y cmake
 	git clone http://github.com/catchorg/Catch2
