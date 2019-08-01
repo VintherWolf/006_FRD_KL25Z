@@ -13,10 +13,10 @@ jobs:
 
       - run: 
           name: Build Test Image
-          command: docker build -t vintherwolf/006_frd_kl25z:$CIRCLE_BUILD_NUM -t vintherwolf/006_frd_kl25z:latest .
+          command: docker build -t vintherwolf/006_frd_kl25z:latest .
       - run: 
           name: Push Test Iamge to DockerHub
-          command: docker push vintherwolf/006_frd_kl25z:$CIRCLE_BUILD_NUM vintherwolf/006_frd_kl25z:latest
+          command: docker push vintherwolf/006_frd_kl25z:latest
   build_and_test:
     docker:
       - image: vintherwolf/006_frd_kl25z:latest
