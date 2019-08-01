@@ -25,12 +25,12 @@ jobs:
       - run:
           name: Install dependancies
           command: |
-          apt-get update && apt-get install -y sudo
-	        apt-get install -y git
-	        apt-get install -y cmake
-          git clone http://github.com/catchorg/Catch2
-          cd Catch2
-          sudo cmake -Bbuild -H. -DBUILD_TESTING=OFF
+            apt-get update && apt-get install -y sudo
+            apt-get install -y git
+            apt-get install -y cmake
+            git clone http://github.com/catchorg/Catch2
+            cd Catch2
+            sudo cmake -Bbuild -H. -DBUILD_TESTING=OFF
       - run:
           name: Build Tests
           command: make
