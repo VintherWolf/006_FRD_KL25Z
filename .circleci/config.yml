@@ -10,7 +10,6 @@ jobs:
           command: |
                    echo "Publishing new image with build num $CIRCLE_BUILD_NUM"
                    docker login -u $DOCKER_USER -p $DOCKER_PASS
-
       - run: 
           name: Build Test Image
           command: docker build -t vintherwolf/006_frd_kl25z:latest .
@@ -23,19 +22,18 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install dependancies
+          name: Install Dependencies
           command: |
-            echo "Skipped"
+            echo "Skipped.. All dependencies allready installed or checked out"
             #apt-get update && apt-get install -y build-essential clang afl curl
             #mkdir /usr/include/catch2 
-            #curl https://raw.githubusercontent.com/catchorg/Catch2/master/single_include/catch2/catch.hpp >> /usr/include/catch2/catch.hpp
-            #locate file
+            #curl https://raw.githubusercontent.com/catchorg/Catch2/master/single_include/catch2/catch.hpp >> /usr/include/catch2/catch.hpp            
       - run:
-          name: Build Tests
-          command: make
+          name: Build
+          command: make build
       - run: 
           name: LED Driver [TEST]
-          command: ./leddriver_test.out              
+          command: make test            
       - store_artifacts:
           path: /code/test-results
           destination: prefix
@@ -45,7 +43,7 @@ jobs:
     steps:
       - checkout
       - run:
-          command: echo "All done"
+          command: echo "Sending update to Slack.."
 
 workflows:
   version: 2
