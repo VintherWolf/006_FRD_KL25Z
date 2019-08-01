@@ -13,13 +13,13 @@ jobs:
 
       - run: 
           name: Build Test Image
-          command: docker build -t vintherwolf/006_FRD_KL25Z:$CIRCLE_BUILD_NUM -t vintherwolf/006_FRD_KL25Z:latest .
+          command: docker build -t vintherwolf/006_frd_kl25z:latest .
       - run: 
           name: Push Test Iamge to DockerHub
-          command: docker push vintherwolf/006_FRD_KL25Z:$CIRCLE_BUILD_NUM vintherwolf/006_FRD_KL25Z:latest
+          command: docker push vintherwolf/006_frd_kl25z:latest
   build_and_test:
     docker:
-      - image: vintherwolf/006_FRD_KL25Z:latest
+      - image: vintherwolf/006_frd_kl25z:latest
     steps:
       - checkout
       - run:
@@ -33,7 +33,7 @@ jobs:
           destination: prefix
   wrap_up:
     docker:
-      - image: vintherwolf/006_FRD_KL25Z:latest
+      - image: vintherwolf/006_frd_kl25z:latest
     steps:
       - checkout
       - run:
