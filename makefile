@@ -16,6 +16,10 @@ CFLAGS=-std=c++11
 all: build test clean
  
 build:
+	git clone https://github.com/catchorg/Catch2.git
+	cd Catch2
+	cmake -Bbuild -H. -DBUILD_TESTING=OFF
+	sudo cmake --build build/ --target install
 	@echo "Going to Compile now!"
 	$(CC) $(CFLAGS) $(SRC_FILES) -o $(TARGET)
 
