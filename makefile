@@ -20,7 +20,7 @@ build:
 	$(CC) $(CFLAGS) $(SRC_FILES) -o $(TARGET)
 
 test:
-	$(TARGET)
+	./$(TARGET)
 						
 clean:	
 	@echo "Cleaning up..."
