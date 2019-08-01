@@ -16,7 +16,6 @@ CFLAGS=-std=c++11
 all: build test clean
  
 build:
-	sudo cmake --build build/ --target install
 	@echo "Going to Compile now!"
 	$(CC) $(CFLAGS) $(SRC_FILES) -o $(TARGET)
 
