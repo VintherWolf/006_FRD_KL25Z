@@ -16,7 +16,7 @@ CFLAGS=-std=c++11
 all: build test clean
  
 build:
-	git clone https://github.com/catchorg/Catch2.git
+	git clone http://github.com/catchorg/Catch2
 	cd Catch2
 	cmake -Bbuild -H. -DBUILD_TESTING=OFF
 	sudo cmake --build build/ --target install
