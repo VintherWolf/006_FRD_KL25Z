@@ -1,0 +1,60 @@
+version: 2.0
+jobs:
+  create_testenv:
+    machine: true
+    steps:
+      - checkout
+    # login to docker:
+      - run:
+          name: Login to DockerHub
+          command: |
+                   echo "Publishing new image with build num $CIRCLE_BUILD_NUM"
+                   docker login -u $DOCKER_USER -p $DOCKER_PASS
+
+      - run: 
+          name: Build Test Image
+          command: docker build -t vintherwolf/006_FRD_KL25Z:$CIRCLE_BUILD_NUM -t vintherwolf/006_FRD_KL25Z:latest .
+      - run: 
+          name: Push Test Iamge to DockerHub
+          command: docker push vintherwolf/006_FRD_KL25Z:$CIRCLE_BUILD_NUM vintherwolf/006_FRD_KL25Z:latest
+  build_and_test:
+    docker:
+      - image: vintherwolf/006_FRD_KL25Z:latest
+    steps:
+      - checkout
+      - run:
+          name: Build Tests
+          command: make
+      - run: 
+          name: LED Driver [TEST]
+          command: ./leddriver_test.out              
+      - store_artifacts:
+          path: /code/test-results
+          destination: prefix
+  wrap_up:
+    docker:
+      - image: vintherwolf/006_FRD_KL25Z:latest
+    steps:
+      - checkout
+      - run:
+          command: echo "All done"
+
+workflows:
+  version: 2
+  jobSequence:
+    jobs:
+      - create_testenv:
+          filters:
+            branches:
+              only: docker-image
+      - build_and_test:
+          filters:
+            branches:
+              ignore: docker-image
+      - wrap_up:
+          filters:
+            branches:
+              ignore: 
+                - docker-image
+          requires:
+            - build_and_test
