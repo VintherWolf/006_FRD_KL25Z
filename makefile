@@ -20,7 +20,7 @@ build:
 	apt-get install -y cmake
 	git clone http://github.com/catchorg/Catch2
 	cd Catch2
-	cmake -Bbuild -H. -DBUILD_TESTING=OFF
+	sudo cmake -Bbuild -H. -DBUILD_TESTING=OFF
 	sudo cmake --build build/ --target install
 	@echo "Going to Compile now!"
 	$(CC) $(CFLAGS) $(SRC_FILES) -o $(TARGET)
