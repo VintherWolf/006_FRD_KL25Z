@@ -31,6 +31,7 @@ jobs:
             git clone http://github.com/catchorg/Catch2
             cd Catch2
             sudo cmake -Bbuild -H. -DBUILD_TESTING=OFF
+            sudo cmake --build build/ --target install
       - run:
           name: Build Tests
           command: make
