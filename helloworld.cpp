@@ -9,10 +9,12 @@
 
 #include <iostream>
 #include <string.h>
+//#include <cstdlib>
+
 #include "helloworld.h"
 
 using namespace std;
-#define Buflen 20;
+#define Buflen 20
 
 int main(int argC, char **argV)
 {
