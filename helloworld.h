@@ -1,17 +1,17 @@
 ////////////////////////////////////////////////////////////////////////////////
-// 	Source File	    : leddriver.h
+// 	Source File	    : HelloWorld.h
 //	Author			: Daniel Wolf
 //  Date			: 30-07-2019
-//	Version			: Git
+//	Version			: 
 //
-//	Description	    : Test Case for KL25Z. Control LEDs on Board. 
+//	Description	    : 
 ///////////////////////////////////////80///////////////////////////////////////
 
-#ifndef LedDriver_h
-#define LedDriver_h
+#ifndef HelloWorld_h
+#define HelloWorld_h
 
 /* Turn ON #id LED  */
-int turnLED_ON(int id);
+void displayStringOnStdOut(char * str);
 
 /* Turn OFF #id LED  */
 //void turnLED_OFF(int id)

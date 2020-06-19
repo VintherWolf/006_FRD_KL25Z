@@ -5,7 +5,7 @@ BINS := $(SRC_FILES:%.cpp=%)
 
 # Output File:
 TARGET_EXTENSION := .out
-TARGET_BASE := leddriver_test
+TARGET_BASE := helloworld_test
 TARGET = $(TARGET_BASE)$(TARGET_EXTENSION)
 
 # Compiler Setup
